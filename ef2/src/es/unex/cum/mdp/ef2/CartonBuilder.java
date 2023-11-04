@@ -1,4 +1,4 @@
-package es.unex.cum.mdp.ef2.Carton;
+package es.unex.cum.mdp.ef2;
 
 import es.unex.cum.mdp.ef2.Usuario;
 
