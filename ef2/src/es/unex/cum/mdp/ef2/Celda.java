@@ -4,7 +4,7 @@ import java.util.*;
 
 public abstract class Celda {
 	protected int numero;
-	protected int estado; //PREGUNTAR SI ES UN ENUMERADO O NO
+	protected EstadoCelda estado; //PREGUNTAR SI ES UN ENUMERADO O NO
 	
 	public Celda() {
 		super();
@@ -13,7 +13,7 @@ public abstract class Celda {
 		super();
 		this.numero = numero;
 	}
-	public Celda(int numero, int estado) {
+	public Celda(int numero, EstadoCelda estado) {
 		super();
 		this.numero = numero;
 		this.estado = estado;
@@ -25,10 +25,10 @@ public abstract class Celda {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	public int getEstado() {
+	public EstadoCelda getEstado() {
 		return estado;
 	}
-	public void setEstado(int estado) {
+	public void setEstado(EstadoCelda estado) {
 		this.estado = estado;
 	}
 	
