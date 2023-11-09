@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.unex.cum.mdp.ef2.carton.Carton75M;
 import es.unex.cum.mdp.ef2.carton.Carton80H;
 import es.unex.cum.mdp.ef2.carton.Carton80M;
 import es.unex.cum.mdp.ef2.carton.Carton80V;
@@ -327,7 +328,7 @@ public class CartonTest80 {
 	}
 
 	@Test
-	public void testRepartir() {
+	public void testRepartirAdHoc() {
 		int[] contFilas = new int[4];
 		int[] contColumnas = new int[8];
 		int contVacias = 0;
@@ -412,5 +413,99 @@ public class CartonTest80 {
 		}
 
 	}
+	
+	@Test
+	public void testRepartirAleatorio() {
+		int[] contFilas = new int[4];
+		int[] contColumnas = new int[8];
+		int contVacias = 0;
+		if (tipo.equals("80M")) {
+			c80=new Carton80M();
+			c80.repartir();
+			CeldaCarton[][] c = (CeldaCarton[][]) c80.getNumeros();
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 8; j++) {
+					// Que el numero esta en la columna correcta
+					if (c[i][j] != null) {
+						if ((c[i][j].getColumna() * 10 > c[i][j].getNumero())
+								|| ((c[i][j].getColumna() + 1) * 10 < c[i][j].getNumero()))
+							fail();
+
+						if (c[i][j].getNumero() != 0) {// Cuento las filas con numeros
+
+							contFilas[c[i][j].getFila()]++; // Cuento numero que hay en filas
+							contColumnas[c[i][j].getColumna()]++; // Cuento numero que hay en columnas
+						}
+					}
+				}
+			}
+			// Compruebo que hay 4 números en cada fila y en cada columna
+			for (int i = 0; i < 4; i++) {
+				// Si las filas no tiene 5 números --> Fallo
+				if (contFilas[i] != 5)
+					fail();
+				// Si hay columnas sin ningún número --> fallo
+				if (contColumnas[i] == 0)
+					fail();
+			}
+		} else if (tipo.equals("80V")) {
+			c80=new Carton80V();
+			c80.repartir();
+			CeldaCarton[] c = (CeldaCarton[]) c80.getNumeros();
+			for (int i = 1; i < 81; i++) {
+				if (c[i] != null) {
+					// no puede haber numero en i y j
+					// Que el numero esta en la columna correcta
+					if ((c[i].getColumna() * 10 > c[i].getNumero())
+							|| ((c[i].getColumna() + 1) * 10 < c[i].getNumero())) {
+						fail();
+					}
+
+					if (c[i].getNumero() != 0) {// Cuento las filas con numeros
+
+						contFilas[c[i].getFila()]++; // Cuento numero que hay en filas
+						contColumnas[c[i].getColumna()]++; // Cuento numero que hay en columnas
+					}
+				}
+			}
+			// Compruebo que hay 4 números en cada fila y en cada columna
+			for (int i = 0; i < 4; i++) {
+				// Si las filas no tiene 5 números --> Fallo
+				if (contFilas[i] != 5)
+					fail();
+				// Si hay columnas sin ningún número --> fallo
+				if (contColumnas[i] == 0)
+					fail();
+			}
+
+		} else if (tipo.equals("80H")) {
+			c80=new Carton80H();
+			c80.repartir();
+			HashMap<Integer, CeldaCarton> c = (HashMap<Integer, CeldaCarton>) c80.getNumeros();
+			for (Integer clave : c.keySet()) {
+				CeldaCarton ca = c.get(clave);
+				// Que el numero esta en la columna correcta
+				if ((ca.getColumna() * 10 > ca.getNumero()) || ((ca.getColumna() + 1) * 10 < ca.getNumero())) {
+					fail();
+				}
+				if (ca.getNumero() != 0) {// Cuento las filas con numeros
+					contFilas[ca.getFila()]++; // Cuento numero que hay en filas
+					contColumnas[ca.getColumna()]++; // Cuento numero que hay en columnas
+				}
+
+			}
+			// Compruebo que hay 4 números en cada fila y en cada columna
+			for (int i = 0; i < 4; i++) {
+				// Si las filas no tiene 5 números --> Fallo
+				if (contFilas[i] != 5)
+					fail();
+				// Si hay columnas sin ningún número --> fallo
+				if (contColumnas[i] == 0)
+					fail();
+			}
+		}
+
+	}
+
 
 }
