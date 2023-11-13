@@ -11,26 +11,26 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.unex.cum.mdp.ef2.carton.Carton75H;
-import es.unex.cum.mdp.ef2.carton.Carton75M;
-import es.unex.cum.mdp.ef2.carton.Carton75V;
-import es.unex.cum.mdp.ef2.carton.CeldaCarton;
-import es.unex.cum.mdp.ef2.carton.EstadoCarton;
-import es.unex.cum.mdp.ef2.carton.ICarton;
+import es.unex.cum.mdp.ef2.Carton75H;
+import es.unex.cum.mdp.ef2.Carton75M;
+import es.unex.cum.mdp.ef2.Carton75V;
+import es.unex.cum.mdp.ef2.CeldaCarton;
+import es.unex.cum.mdp.ef2.EstadoCarton;
+import es.unex.cum.mdp.ef2.ICarton;
 
 public class CartonTest75 {
 	private ICarton c75 = null;
-	private String tipo = "75M"; //TODO 75M 75V 75H
+	private String tipo = "75M"; // TODO 75M 75V 75H
 
 	@Before
 	public void setUp() throws Exception {
 		if (tipo.equals("75M")) {
 			c75 = new Carton75M();
-		}else if (tipo.equals("75V")) {
+		} else if (tipo.equals("75V")) {
 			c75 = new Carton75V();
-		}else if (tipo.equals("75H")) {
+		} else if (tipo.equals("75H")) {
 			c75 = new Carton75H();
-		}else {
+		} else {
 			fail();
 		}
 
@@ -359,14 +359,14 @@ public class CartonTest75 {
 					if (c[i][j].getFila() == c[i][j].getColumna() && c[i][j].getNumero() != 0) // no puede haber numero
 																								// en i y j
 						fail();
-					//Que el numero esta en la columna correcta
-					if (c[i][j].getNumero()!=0 && (c[i][j].getColumna()*15>c[i][j].getNumero()) || ((c[i][j].getColumna()+1)*15<c[i][j].getNumero()))
-						fail();
-					
 					if (i != j && c[i][j].getNumero() != 0) {// Cuento las filas con numeros
 
 						contFilas[c[i][j].getFila()]++; // Cuento numero que hay en filas
 						contColumnas[c[i][j].getColumna()]++; // Cuento numero que hay en columnas
+						// Que el numero esta en la columna correcta
+						if (c[i][j].getNumero() != 0 && (c[i][j].getColumna() * 15 > c[i][j].getNumero())
+								|| ((c[i][j].getColumna() + 1) * 15 < c[i][j].getNumero()))
+							fail();
 					}
 				}
 			}
@@ -384,15 +384,14 @@ public class CartonTest75 {
 					// no puede haber numero en i y j
 					if (c[i].getFila() == c[i].getColumna() && c[i].getNumero() != 0)
 						fail("");
-					//Que el numero esta en la columna correcta
-					if ( (c[i].getColumna()*15>c[i].getNumero()) || ((c[i].getColumna()+1)*15<c[i].getNumero()))
-						fail();
-
-					
 					if (c[i].getNumero() != 0) {// Cuento las filas con numeros
 
 						contFilas[c[i].getFila()]++; // Cuento numero que hay en filas
 						contColumnas[c[i].getColumna()]++; // Cuento numero que hay en columnas
+						// Que el numero esta en la columna correcta
+						if ((c[i].getColumna() * 15 > c[i].getNumero())
+								|| ((c[i].getColumna() + 1) * 15 < c[i].getNumero()))
+							fail();
 					}
 				}
 			}
@@ -411,13 +410,13 @@ public class CartonTest75 {
 				// no puede haber numero en i y j
 				if (ca.getFila() == ca.getColumna() && ca.getNumero() != 0)
 					fail("");
-				//Que el numero esta en la columna correcta
-				if ( (ca.getColumna()*15>ca.getNumero()) || ((ca.getColumna()+1)*15<ca.getNumero()))
-					fail();
 
 				if (ca.getNumero() != 0) {// Cuento las filas con numeros
 					contFilas[ca.getFila()]++; // Cuento numero que hay en filas
 					contColumnas[ca.getColumna()]++; // Cuento numero que hay en columnas
+					// Que el numero esta en la columna correcta
+					if ((ca.getColumna() * 15 > ca.getNumero()) || ((ca.getColumna() + 1) * 15 < ca.getNumero()))
+						fail();
 				}
 
 			}
@@ -431,29 +430,29 @@ public class CartonTest75 {
 		}
 
 	}
-	
+
 	@Test
 	public void testRepartirAleatorio() {
 		int[] contFilas = new int[5];
 		int[] contColumnas = new int[5];
 		int contVacias = 0;
 		if (tipo.equals("75M")) {
-			c75=new Carton75M();
+			c75 = new Carton75M();
 			c75.repartir();
 			CeldaCarton[][] c = (CeldaCarton[][]) c75.getNumeros();
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 5; j++) {
 					if (c[i][j].getFila() == c[i][j].getColumna() && c[i][j].getNumero() != 0) // no puede haber numero
-																								// en i y j
 						fail();
-					//Que el numero esta en la columna correcta
-					if (c[i][j].getNumero()!=0 && (c[i][j].getColumna()*15>c[i][j].getNumero()) || ((c[i][j].getColumna()+1)*15<c[i][j].getNumero()))
-						fail();
-					
 					if (i != j && c[i][j].getNumero() != 0) {// Cuento las filas con numeros
 
 						contFilas[c[i][j].getFila()]++; // Cuento numero que hay en filas
 						contColumnas[c[i][j].getColumna()]++; // Cuento numero que hay en columnas
+						// Que el numero esta en la columna correcta
+						if (c[i][j].getNumero() != 0 && (c[i][j].getColumna() * 15 > c[i][j].getNumero())
+								|| ((c[i][j].getColumna() + 1) * 15 < c[i][j].getNumero()))
+							fail();
+
 					}
 				}
 			}
@@ -465,7 +464,7 @@ public class CartonTest75 {
 					fail();
 			}
 		} else if (tipo.equals("75V")) {
-			c75=new Carton75V();
+			c75 = new Carton75V();
 			c75.repartir();
 			CeldaCarton[] c = (CeldaCarton[]) c75.getNumeros();
 			for (int i = 1; i <= 75; i++) {
@@ -473,15 +472,15 @@ public class CartonTest75 {
 					// no puede haber numero en i y j
 					if (c[i].getFila() == c[i].getColumna() && c[i].getNumero() != 0)
 						fail("");
-					//Que el numero esta en la columna correcta
-					if ( (c[i].getColumna()*15>c[i].getNumero()) || ((c[i].getColumna()+1)*15<c[i].getNumero()))
-						fail();
-
-					
 					if (c[i].getNumero() != 0) {// Cuento las filas con numeros
 
 						contFilas[c[i].getFila()]++; // Cuento numero que hay en filas
 						contColumnas[c[i].getColumna()]++; // Cuento numero que hay en columnas
+						// Que el numero esta en la columna correcta
+						if ((c[i].getColumna() * 15 > c[i].getNumero())
+								|| ((c[i].getColumna() + 1) * 15 < c[i].getNumero()))
+							fail();
+
 					}
 				}
 			}
@@ -494,7 +493,7 @@ public class CartonTest75 {
 			}
 
 		} else if (tipo.equals("75H")) {
-			c75=new Carton75H();
+			c75 = new Carton75H();
 			c75.repartir();
 			HashMap<Integer, CeldaCarton> c = (HashMap<Integer, CeldaCarton>) c75.getNumeros();
 			for (Integer clave : c.keySet()) {
@@ -502,13 +501,14 @@ public class CartonTest75 {
 				// no puede haber numero en i y j
 				if (ca.getFila() == ca.getColumna() && ca.getNumero() != 0)
 					fail("");
-				//Que el numero esta en la columna correcta
-				if ( (ca.getColumna()*15>ca.getNumero()) || ((ca.getColumna()+1)*15<ca.getNumero()))
-					fail();
 
 				if (ca.getNumero() != 0) {// Cuento las filas con numeros
 					contFilas[ca.getFila()]++; // Cuento numero que hay en filas
 					contColumnas[ca.getColumna()]++; // Cuento numero que hay en columnas
+					// Que el numero esta en la columna correcta
+					if ((ca.getColumna() * 15 > ca.getNumero()) || ((ca.getColumna() + 1) * 15 < ca.getNumero()))
+						fail();
+
 				}
 
 			}

@@ -11,12 +11,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.unex.cum.mdp.ef2.carton.Carton90H;
-import es.unex.cum.mdp.ef2.carton.Carton90M;
-import es.unex.cum.mdp.ef2.carton.Carton90V;
-import es.unex.cum.mdp.ef2.carton.CeldaCarton;
-import es.unex.cum.mdp.ef2.carton.EstadoCarton;
-import es.unex.cum.mdp.ef2.carton.ICarton;
+import es.unex.cum.mdp.ef2.Carton90H;
+import es.unex.cum.mdp.ef2.Carton90M;
+import es.unex.cum.mdp.ef2.Carton90V;
+import es.unex.cum.mdp.ef2.CeldaCarton;
+import es.unex.cum.mdp.ef2.EstadoCarton;
+import es.unex.cum.mdp.ef2.ICarton;
 
 public class CartonTest90 {
 
@@ -281,14 +281,13 @@ public class CartonTest90 {
 				for (int j = 0; j < 9; j++) {
 					// Que el numero esta en la columna correcta
 					if (c[i][j] != null) {
-						if ((c[i][j].getColumna() * 10 > c[i][j].getNumero())
-								|| ((c[i][j].getColumna() + 1) * 10 < c[i][j].getNumero()))
-							fail();
-
 						if (c[i][j].getNumero() != 0) {// Cuento las filas con numeros
 
 							contFilas[c[i][j].getFila()]++; // Cuento numero que hay en filas
 							contColumnas[c[i][j].getColumna()]++; // Cuento numero que hay en columnas
+							if ((c[i][j].getColumna() * 10 > c[i][j].getNumero())
+									|| ((c[i][j].getColumna() + 1) * 10 < c[i][j].getNumero()))
+								fail();
 						}
 					}
 				}
@@ -307,16 +306,15 @@ public class CartonTest90 {
 			for (int i = 1; i < 91; i++) {
 				if (c[i] != null) {
 					// no puede haber numero en i y j
-					// Que el numero esta en la columna correcta
-					if ((c[i].getColumna() * 10 > c[i].getNumero())
-							|| ((c[i].getColumna() + 1) * 10 < c[i].getNumero())) {
-						fail();
-					}
-
 					if (c[i].getNumero() != 0) {// Cuento las filas con numeros
-
 						contFilas[c[i].getFila()]++; // Cuento numero que hay en filas
 						contColumnas[c[i].getColumna()]++; // Cuento numero que hay en columnas
+						// Que el numero esta en la columna correcta
+						if ((c[i].getColumna() * 10 > c[i].getNumero())
+								|| ((c[i].getColumna() + 1) * 10 < c[i].getNumero())) {
+							fail();
+						}
+
 					}
 				}
 			}
@@ -334,13 +332,13 @@ public class CartonTest90 {
 			HashMap<Integer, CeldaCarton> c = (HashMap<Integer, CeldaCarton>) c90.getNumeros();
 			for (Integer clave : c.keySet()) {
 				CeldaCarton ca = c.get(clave);
-				// Que el numero esta en la columna correcta
-				if ((ca.getColumna() * 10 > ca.getNumero()) || ((ca.getColumna() + 1) * 10 < ca.getNumero())) {
-					fail();
-				}
 				if (ca.getNumero() != 0) {// Cuento las filas con numeros
 					contFilas[ca.getFila()]++; // Cuento numero que hay en filas
 					contColumnas[ca.getColumna()]++; // Cuento numero que hay en columnas
+					// Que el numero esta en la columna correcta
+					if ((ca.getColumna() * 10 > ca.getNumero()) || ((ca.getColumna() + 1) * 10 < ca.getNumero())) {
+						fail();
+					}
 				}
 
 			}
@@ -371,14 +369,12 @@ public class CartonTest90 {
 				for (int j = 0; j < 9; j++) {
 					// Que el numero esta en la columna correcta
 					if (c[i][j] != null) {
-						if ((c[i][j].getColumna() * 10 > c[i][j].getNumero())
-								|| ((c[i][j].getColumna() + 1) * 10 < c[i][j].getNumero()))
-							fail();
-
 						if (c[i][j].getNumero() != 0) {// Cuento las filas con numeros
-
 							contFilas[c[i][j].getFila()]++; // Cuento numero que hay en filas
 							contColumnas[c[i][j].getColumna()]++; // Cuento numero que hay en columnas
+							if ((c[i][j].getColumna() * 10 > c[i][j].getNumero())
+									|| ((c[i][j].getColumna() + 1) * 10 < c[i][j].getNumero()))
+								fail();
 						}
 					}
 				}
@@ -399,16 +395,14 @@ public class CartonTest90 {
 			for (int i = 1; i < 91; i++) {
 				if (c[i] != null) {
 					// no puede haber numero en i y j
-					// Que el numero esta en la columna correcta
-					if ((c[i].getColumna() * 10 > c[i].getNumero())
-							|| ((c[i].getColumna() + 1) * 10 < c[i].getNumero())) {
-						fail();
-					}
-
 					if (c[i].getNumero() != 0) {// Cuento las filas con numeros
-
 						contFilas[c[i].getFila()]++; // Cuento numero que hay en filas
 						contColumnas[c[i].getColumna()]++; // Cuento numero que hay en columnas
+						// Que el numero esta en la columna correcta
+						if ((c[i].getColumna() * 10 > c[i].getNumero())
+								|| ((c[i].getColumna() + 1) * 10 < c[i].getNumero())) {
+							fail();
+						}
 					}
 				}
 			}
@@ -428,13 +422,13 @@ public class CartonTest90 {
 			HashMap<Integer, CeldaCarton> c = (HashMap<Integer, CeldaCarton>) c90.getNumeros();
 			for (Integer clave : c.keySet()) {
 				CeldaCarton ca = c.get(clave);
-				// Que el numero esta en la columna correcta
-				if ((ca.getColumna() * 10 > ca.getNumero()) || ((ca.getColumna() + 1) * 10 < ca.getNumero())) {
-					fail();
-				}
 				if (ca.getNumero() != 0) {// Cuento las filas con numeros
 					contFilas[ca.getFila()]++; // Cuento numero que hay en filas
 					contColumnas[ca.getColumna()]++; // Cuento numero que hay en columnas
+					// Que el numero esta en la columna correcta
+					if ((ca.getColumna() * 10 > ca.getNumero()) || ((ca.getColumna() + 1) * 10 < ca.getNumero())) {
+						fail();
+					}
 				}
 
 			}
