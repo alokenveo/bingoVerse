@@ -13,10 +13,22 @@ public abstract class Celda {
 		super();
 		this.numero = numero;
 	}
-	public Celda(int numero, EstadoCelda estado) {
+	public Celda(int numero, int estado) {
 		super();
 		this.numero = numero;
-		this.estado = estado;
+		switch(estado) {
+		case 0:
+			this.estado=EstadoCelda.VACIO;
+			break;
+		case 1:
+			this.estado=EstadoCelda.NUMERO;
+			break;
+		case 2:
+			this.estado=EstadoCelda.CANTADO;
+			break;
+		default:
+			break;
+		}
 	}
 	
 	public int getNumero() {

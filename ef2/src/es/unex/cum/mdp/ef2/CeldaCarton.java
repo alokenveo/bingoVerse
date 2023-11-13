@@ -9,6 +9,14 @@ public class CeldaCarton extends Celda {
 	
 	
 	
+	public CeldaCarton(int numero, int estado) {
+		super(numero, estado);
+	}
+	public CeldaCarton(int numero, int estado, int fila, int columna) {
+		super(numero, estado);
+		this.fila = fila;
+		this.columna = columna;
+	}
 	public int getFila() {
 		return fila;
 	}
@@ -38,6 +46,10 @@ public class CeldaCarton extends Celda {
 	}
 	public void setRutaReverso(String rutaReverso) {
 		RutaReverso = rutaReverso;
+	}
+	@Override
+	public String toString() {
+		return "CeldaCarton [fila=" + fila + ", columna=" + columna + ", especial=" + especial + "]";
 	}
 	
 	
