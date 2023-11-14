@@ -82,7 +82,6 @@ public class Carton80H implements ICarton {
 
 	@Override
 	public boolean comprobarLinea() {
-		// TODO Auto-generated method stub
 		for (int i = 0; i < numeroFilas; i++) {
 			if (comprobarLinea(i)) {
 				return true;
@@ -93,7 +92,6 @@ public class Carton80H implements ICarton {
 
 	@Override
 	public boolean comprobarLinea(int fila) {
-		// TODO Auto-generated method stub
 		for (CeldaCarton c : numeros.values()) {
 	        if (c.getFila() == fila && c.getEstado() != EstadoCelda.CANTADO) {
 	            return false;  // Si alguna celda no ha sido cantada, la línea no está completa
@@ -115,7 +113,6 @@ public class Carton80H implements ICarton {
 
 	@Override
 	public boolean comprobarBingo() {
-		// TODO Auto-generated method stub
 		Iterator<Map.Entry<Integer, CeldaCarton>> it = numeros.entrySet().iterator();
 		while (it.hasNext()) {
 			CeldaCarton c = it.next().getValue();
@@ -129,7 +126,6 @@ public class Carton80H implements ICarton {
 
 	@Override
 	public boolean comprobarEspeciales() {
-		// TODO Auto-generated method stub
 		Iterator<Map.Entry<Integer, CeldaCarton>> it = numeros.entrySet().iterator();
 		while (it.hasNext()) {
 			CeldaCarton c = it.next().getValue();
@@ -143,52 +139,77 @@ public class Carton80H implements ICarton {
 
 	@Override
 	public boolean repartir() {
-		// TODO Auto-generated method stub
 		CeldaCarton[][] m = new CeldaCarton[numeroFilas][numeroColumnas];
 		Set<Integer> numerosGenerados = new HashSet<>();
-		boolean[] filaLlena = new boolean[numeroFilas];
 		Random r = new Random();
-		for (int i = 0; i < numeroAciertosBingo; i++) {
-			// Obtenemos el números
-			int num = obtenerAleatorio(r, numerosGenerados);
-
-			// Obtenermos el lugar para meterlo
-			int fila;
-			int col = (int) Math.ceil(num / 10.0) - 1;
-			do {
-				fila = r.nextInt(numeroFilas);
-				while (comprobarColumna(m, col) <= 1) {
-					num = obtenerAleatorio(r, numerosGenerados);
-					col = (int) Math.ceil(num / 10.0) - 1;
-					fila = r.nextInt(numeroFilas);
-				}
-			} while (m[fila][col] != null || filaLlena[fila]);
-
-			// Creamos la celda y la metemos la celda en la matriz
-			CeldaCarton c = new CeldaCarton(num, 1);
-			c.setFila(fila);
-			c.setColumna(col);
-			m[fila][col] = c;
-
-			if (comprobarFila(m, fila) <= 3) {
-				filaLlena[fila] = true;
-			}
-		}
-
-		// Rellenamos los huecos que faltan en la matriz
-		for (int i = 0; i < numeroFilas; i++) {
-			for (int j = 0; j < numeroColumnas; j++) {
-				if (m[i][j] == null) {
-					m[i][j] = new CeldaCarton(0, 0, i, j);
-				}
+		
+		//Rellenamos los números del cartón
+		int aleatorio;
+		
+		for(int j=0;j<m[0].length;j++) {
+			for(int i=0;i<m.length;i++) {
+				do {
+					switch(j) {
+					case 0:
+						aleatorio=generarAleatorio(1,10);
+						break;
+					case 7:
+						aleatorio=generarAleatorio(71,80);
+						break;
+					default:
+						aleatorio=generarAleatorio((10*j)+1, (10*j)+10);
+						break;
+					}
+				}while(!numerosGenerados.add(aleatorio));//while(repetido);
+				m[i][j]=new CeldaCarton(aleatorio,1,i,j);
 			}
 		}
 		
+		//Ahora vamos a ordenar las columnas de los cartones
+		CeldaCarton[] celdas=new CeldaCarton[numeroFilas];
+		for(int j=0;j<m[0].length;j++) {
+			for(int i=0;i<m.length;i++) {
+				celdas[i]=m[i][j];
+			}
+			Arrays.sort(celdas, new Comparator<CeldaCarton>() {
+	            @Override
+	            public int compare(CeldaCarton celda1, CeldaCarton celda2) {
+	                // Comparar las celdas basándonos en el número
+	                return Integer.compare(celda1.getNumero(), celda2.getNumero());
+	            }
+	        });
+			for(int i=0;i<celdas.length;i++) {
+				m[i][j]=celdas[i];
+			}
+		}
+		
+		//Ahora marcaremos los huecos
+		int maxFila=3;
+		int minCol=1;
+		
+		for (int i = 0; i < m.length; i++) {
+            int celdasEnFila = 0;
+
+            while (celdasEnFila < maxFila) {
+                int j = r.nextInt(m[0].length);
+                int celdasEnColumna = comprobarColumna(m, j);
+
+                if (m[i][j].getEstado() !=EstadoCelda.VACIO && celdasEnColumna >= minCol) {
+                    // Verificar que la fila no esté llena
+                        m[i][j] = new CeldaCarton(0,0,i,j);
+                        if(comprobarFila(m,i)<=3) {
+                        	celdasEnFila++;
+                        }
+                }
+            }
+        }
 
 		// Añado los números de la matriz al hashMap
 		for (int i = 0; i < numeroFilas; i++) {
 			for (int j = 0; j < numeroColumnas; j++) {
 				if (m[i][j].getEstado() != EstadoCelda.VACIO) {
+					m[i][j].setFila(i);
+					m[i][j].setColumna(j);
 					addNumero(m[i][j]);
 				}
 			}
@@ -208,7 +229,6 @@ public class Carton80H implements ICarton {
 
 	@Override
 	public boolean addNumero(CeldaCarton c) {
-		// TODO Auto-generated method stub
 		int clave = c.getNumero();
 		if (clave >= 1 && clave <= numeroMaximo && !numeros.containsKey(clave)) {
 			numeros.put(clave, c);
@@ -219,7 +239,6 @@ public class Carton80H implements ICarton {
 
 	@Override
 	public boolean addEspecial(int num) {
-		// TODO Auto-generated method stub
 		if (num > 0 && num <= numeroMaximo) {
 			CeldaCarton c = numeros.get(num);
 			if (c == null) {
@@ -310,7 +329,7 @@ public class Carton80H implements ICarton {
 		int libres = 0;
 		if (m != null && fila >= 0 && fila < m.length) {
 			for (int i = 0; i < m[fila].length; i++) {
-				if (m[fila][i] == null) {
+				if (m[fila][i].getEstado()==EstadoCelda.VACIO) {
 					libres++;
 				}
 			}
@@ -322,20 +341,15 @@ public class Carton80H implements ICarton {
 		int libres = 0;
 		if (m != null && m.length > 0 && col >= 0 && col < m[0].length) {
 			for (int i = 0; i < m.length; i++) {
-				if (m[i][col] == null) {
+				if (m[i][col].getEstado()!=EstadoCelda.VACIO) {
 					libres++;
 				}
 			}
 		}
 		return libres;
 	}
-
-	private int obtenerAleatorio(Random r, Set<Integer> s) {
-		int num;
-		do {
-			num = r.nextInt(numeroMaximo) + 1;
-		} while (!s.add(num));
-		return num;
+	private int generarAleatorio(int min, int max) {
+		return (int) (Math.random()*(max-min+1)+(min));
 	}
 
 }
