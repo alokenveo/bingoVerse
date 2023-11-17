@@ -3,49 +3,60 @@ package es.unex.cum.mdp.ef2;
 import java.util.*;;
 
 public class BolsaBingo implements Bolsa{
-	private Queue bolsa;
+	private Queue<Integer> bolsa;
 	private int numMaxBolas;
 	
 	
+	public BolsaBingo(int numMaxBolas) {
+		this.numMaxBolas = numMaxBolas;
+		this.bolsa=new LinkedList<>();
+	}
 	@Override
 	public void addNumero(int bola) {
-		// TODO Auto-generated method stub
+		if (bolsa.size() < numMaxBolas) {
+            bolsa.add(bola);
+        }
 		
 	}
 	@Override
-	public Queue getBolsa() {
-		// TODO Auto-generated method stub
-		return null;
+	public Queue<Integer> getBolsa() {
+		return bolsa;
+	}
+	@Override
+	public String toString() {
+		return "BolsaBingo [bolsa=" + bolsa + ", numMaxBolas=" + numMaxBolas + "]";
 	}
 	@Override
 	public void ordenar() {
-		// TODO Auto-generated method stub
+		LinkedList<Integer> listaOrdenada = new LinkedList<>(bolsa);
+        listaOrdenada.sort(Integer::compareTo);
+        bolsa.clear();
+        bolsa.addAll(listaOrdenada);
 		
 	}
 	@Override
 	public void desordenar() {
-		// TODO Auto-generated method stub
+		LinkedList<Integer> listaDesordenada = new LinkedList<>(bolsa);
+        Collections.shuffle(listaDesordenada);
+        bolsa.clear();
+        bolsa.addAll(listaDesordenada);
 		
 	}
 	@Override
 	public int getTotalBolas() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bolsa.size();
 	}
 	@Override
 	public boolean bolsaVacia() {
-		// TODO Auto-generated method stub
-		return false;
+		return bolsa.isEmpty();
 	}
 	@Override
 	public Object sacarBola() {
-		// TODO Auto-generated method stub
-		return null;
+		return bolsa.poll();
 	}
 	@Override
 	public Object mostrarPrimero() {
-		// TODO Auto-generated method stub
-		return null;
+		return bolsa.peek();
 	}
 
 }
