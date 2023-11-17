@@ -110,4 +110,16 @@ public class Carton75M implements ICarton{
 		return null;
 	}
 
+	@Override
+	public void setPrecio(float p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setNumeros(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

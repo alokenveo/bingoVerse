@@ -352,4 +352,16 @@ public class Carton80H implements ICarton {
 		return (int) (Math.random()*(max-min+1)+(min));
 	}
 
+	@Override
+	public void setPrecio(float p) {
+		this.precio=p;
+		
+	}
+
+	@Override
+	public void setNumeros(Object o) {
+		this.numeros=(HashMap<Integer, CeldaCarton>) o;
+		
+	}
+
 }
