@@ -3,6 +3,9 @@ package es.unex.cum.mdp.ef2.carton;
 import es.unex.cum.mdp.ef2.Usuario;
 import es.unex.cum.mdp.ef2.celda.CeldaCarton;
 
+/**
+ * Implementacion de la interfaz ICarton para un cartón de 75 numeros ordenados en un Vector
+ */
 public class Carton75V implements ICarton{
 
 	@Override
@@ -124,5 +127,6 @@ public class Carton75V implements ICarton{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

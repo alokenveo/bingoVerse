@@ -2,9 +2,17 @@ package es.unex.cum.mdp.ef2.carton;
 
 import es.unex.cum.mdp.ef2.Usuario;
 
+/**
+ * Constructor de cartones que permite la construccion de diferentes tipos de cartones.
+ */
 public class CartonBuilder {
 	private ICarton b;
 
+	/**
+     * Construye un CartonBuilder para un tipo especifico de carton.
+     *
+     * @param tipo Tipo de carton.
+     */
 	public CartonBuilder(String tipo) {
 		if (tipo.equals("75M")) {
 			b = new Carton75M();
@@ -29,16 +37,33 @@ public class CartonBuilder {
 
 	}
 
+	/**
+     * Establece el identificador del carton en construccion.
+     *
+     * @param id Identificador del carton.
+     * @return La instancia actual de CartonBuilder.
+     */
 	public CartonBuilder withId(final int id) {
 		this.b.setId(id);
 		return this;
 	}
 
+	/**
+     * Establece el usuario asociado al carton en construccion.
+     *
+     * @param u Usuario asociado al carton.
+     * @return La instancia actual de CartonBuilder.
+     */
 	public CartonBuilder withUser(final Usuario u) {
 		this.b.setUser(u);
 		return this;
 	}
 
+	/**
+     * Construye y reparte los números en el carton.
+     *
+     * @return El carton construido.
+     */
 	public ICarton build() {
 		if (b != null) {
 			b.repartir();

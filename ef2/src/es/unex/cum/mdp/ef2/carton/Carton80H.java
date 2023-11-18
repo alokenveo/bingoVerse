@@ -14,6 +14,9 @@ import es.unex.cum.mdp.ef2.Usuario;
 import es.unex.cum.mdp.ef2.celda.CeldaCarton;
 import es.unex.cum.mdp.ef2.celda.EstadoCelda;
 
+/**
+ * Implementacion de la interfaz ICarton para un carton de 80 numeros ordenados en un HashMap
+ */
 public class Carton80H implements ICarton {
 	private int id;
 	private Usuario user;
@@ -29,6 +32,9 @@ public class Carton80H implements ICarton {
 	private int numeroAciertosLinea;
 	private int numEspeciales;
 
+	/**
+     * Constructor predeterminado que inicializa las caracteristicas del carton.
+     */
 	public Carton80H() {
 		numeroFilas = 4;
 		numeroColumnas = 8;
@@ -40,6 +46,16 @@ public class Carton80H implements ICarton {
 		numeros = new HashMap<>();
 	}
 
+	/**
+     * Constructor que permite configurar las caracteristicas del carton al crearlo.
+     *
+     * @param numeroFilas          Numero de filas en el carton.
+     * @param numeroColumnas       Numero de columnas en el carton.
+     * @param numeroMaximo         Numero maximo permitido en el carton.
+     * @param numeroAciertosBingo  Numero minimo de aciertos requeridos para el bingo.
+     * @param numeroAciertosLinea  Numero minimo de aciertos requeridos para una linea.
+     * @param numEspeciales        Numero de celdas especiales en el carton.
+     */
 	public Carton80H(int numeroFilas, int numeroColumnas, int numeroMaximo, int numeroAciertosBingo,
 			int numeroAciertosLinea, int numEspeciales) {
 		super();
@@ -106,11 +122,11 @@ public class Carton80H implements ICarton {
 	public boolean comprobarLinea(int fila) {
 		for (CeldaCarton c : numeros.values()) {
 	        if (c.getFila() == fila && c.getEstado() != EstadoCelda.CANTADO) {
-	            return false;  // Si alguna celda no ha sido cantada, la línea no está completa
+	            return false;  // Si alguna celda no ha sido cantada, la linea no esta completa
 	        }
 	    }
 	    cambiarEstado("linea");  // Si todas las celdas de la fila han sido cantadas, cambia el estado
-	    return true;  // Indica que la línea está completa
+	    return true;  // Indica que la linea esta completa
 	}
 
 	@Override
@@ -155,7 +171,7 @@ public class Carton80H implements ICarton {
 		Set<Integer> numerosGenerados = new HashSet<>();
 		Random r = new Random();
 		
-		//Rellenamos los números del cartón
+		//Rellenamos los numeros del carton
 		int aleatorio;
 		
 		for(int j=0;j<m[0].length;j++) {
@@ -186,7 +202,7 @@ public class Carton80H implements ICarton {
 			Arrays.sort(celdas, new Comparator<CeldaCarton>() {
 	            @Override
 	            public int compare(CeldaCarton celda1, CeldaCarton celda2) {
-	                // Comparar las celdas basándonos en el número
+	                // Comparar las celdas basandonos en el numero
 	                return Integer.compare(celda1.getNumero(), celda2.getNumero());
 	            }
 	        });
@@ -207,7 +223,7 @@ public class Carton80H implements ICarton {
                 int celdasEnColumna = comprobarColumna(m, j);
 
                 if (m[i][j].getEstado() !=EstadoCelda.VACIO && celdasEnColumna >= minCol) {
-                    // Verificar que la fila no esté llena
+                    // Verificar que la fila no este llena
                         m[i][j] = new CeldaCarton(0,0,i,j);
                         if(comprobarFila(m,i)<=3) {
                         	celdasEnFila++;
@@ -216,7 +232,7 @@ public class Carton80H implements ICarton {
             }
         }
 
-		// Añado los números de la matriz al hashMap
+		// Añado los numeros de la matriz al hashMap
 		for (int i = 0; i < numeroFilas; i++) {
 			for (int j = 0; j < numeroColumnas; j++) {
 				if (m[i][j].getEstado() != EstadoCelda.VACIO) {
@@ -292,10 +308,30 @@ public class Carton80H implements ICarton {
 	public Object getNumeros() {
 		return numeros;
 	}
+	
+	@Override
+	public void setPrecio(float p) {
+		this.precio=p;
+		
+	}
 
-	// MÉTODOS PRIVADOS
+	@Override
+	public void setNumeros(Object o) {
+		this.numeros=(HashMap<Integer, CeldaCarton>) o;
+		
+	}
+
+	//-------------------------------------------
+	// METODOS PRIVADOS
+	//------------------------------------------
+	
+	/**
+     * Cambia el estado del carton dependiendo del tipo de acierto.
+     *
+     * @param comp Tipo de acierto (linea, especial, bingo).
+     */
 	private void cambiarEstado(String comp) {
-		// Actualización de estados
+		// Actualizacion de estados
 		if (comp.equals("linea")) {
 			switch (estado) {
 			case NADA:
@@ -338,6 +374,13 @@ public class Carton80H implements ICarton {
 		}
 	}
 
+	/**
+     * Comprueba la cantidad de celdas libres en una fila especifica del carton.
+     *
+     * @param m    Matriz de celdas del carton.
+     * @param fila Fila a verificar.
+     * @return Cantidad de celdas libres en la fila.
+     */
 	private int comprobarFila(CeldaCarton[][] m, int fila) {
 		int libres = 0;
 		if (m != null && fila >= 0 && fila < m.length) {
@@ -350,6 +393,13 @@ public class Carton80H implements ICarton {
 		return libres;
 	}
 
+	/**
+     * Comprueba la cantidad de celdas ocupadas en una columna especifica del carton.
+     *
+     * @param m   Matriz de celdas del carton.
+     * @param col Columna a verificar.
+     * @return Cantidad de celdas ocupadas en la columna.
+     */
 	private int comprobarColumna(CeldaCarton[][] m, int col) {
 		int libres = 0;
 		if (m != null && m.length > 0 && col >= 0 && col < m[0].length) {
@@ -361,20 +411,16 @@ public class Carton80H implements ICarton {
 		}
 		return libres;
 	}
+	
+	/**
+     * Genera un numero aleatorio dentro de un rango especifico.
+     *
+     * @param min Valor minimo del rango.
+     * @param max Valor maximo del rango.
+     * @return Numero aleatorio generado.
+     */
 	private int generarAleatorio(int min, int max) {
 		return (int) (Math.random()*(max-min+1)+(min));
-	}
-
-	@Override
-	public void setPrecio(float p) {
-		this.precio=p;
-		
-	}
-
-	@Override
-	public void setNumeros(Object o) {
-		this.numeros=(HashMap<Integer, CeldaCarton>) o;
-		
 	}
 
 }

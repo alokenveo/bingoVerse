@@ -7,17 +7,34 @@ import java.util.List;
 import es.unex.cum.mdp.ef2.Estadistica;
 import es.unex.cum.mdp.ef2.carton.ICarton;
 
+/**
+ * Clase que implementa un juego de Bingo con numeros del 1 al 80.
+ */
 public class Bingo80 extends Bingo {
 
+	/**
+     * Constructor predeterminado de la clase Bingo80.
+     */
 	public Bingo80() {
 		super();
 	}
 
+	/**
+     * Constructor que inicializa el precio del carton y la bolsa de Bingo.
+     *
+     * @param f Precio del carton.
+     */
 	public Bingo80(float f) {
 		super(f);
 		this.b = new BolsaBingo(80);
 	}
 
+	/**
+     * Implementacion del proceso de juego del Bingo80.
+     *
+     * @param estadistica Arreglo de estadisticas para el juego.
+     * @return Resultados del juego en un objeto de tipo Reparto.
+     */
 	@Override
 	public Reparto jugar(Estadistica[] estadistica) {
 		// Generamos una bolsa aleatoria
@@ -26,7 +43,7 @@ public class Bingo80 extends Bingo {
 		}
 		b.desordenar();
 
-		// La recaudación del Bingo será el dinero obtenido de la venta de cartones
+		// La recaudacion del Bingo sera el dinero obtenido de la venta de cartones
 		recaudacion = cartones.size() * 2;
 		Reparto r = new Reparto(recaudacion);
 
@@ -129,6 +146,13 @@ public class Bingo80 extends Bingo {
 		return r;
 	}
 
+	/**
+     * Implementacion del proceso de juego del Bingo80 con numeros especificos.
+     *
+     * @param estadistica Arreglo de estadisticas para el juego.
+     * @param numeros     Lista de numeros especificos para el juego.
+     * @return Resultados del juego en un objeto de tipo Reparto.
+     */
 	@Override
 	public Reparto jugar(Estadistica[] estadistica, List<Integer> numeros) {
 		// TODO Auto-generated method stub
@@ -234,10 +258,24 @@ public class Bingo80 extends Bingo {
 		return r;
 	}
 
+	/**
+     * Representacion en cadena de texto del objeto Bingo80.
+     *
+     * @return Cadena de texto que representa el objeto.
+     */
 	@Override
 	public String toString() {
 		return "Bingo80 [" + super.toString() + "]";
 	}
+	
+	/**
+	 * Redondea un numero decimal a la cantidad de decimales especificada.
+	 *
+	 * @param d            Numero decimal a redondear.
+	 * @param decimalPlace Cantidad de decimales a mantener.
+	 * @return Numero decimal redondeado.
+	 */
+	@SuppressWarnings("deprecation")
 	private float round(float d, int decimalPlace) {
 		BigDecimal bd = new BigDecimal(Float.toString(d));
 		bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);

@@ -3,7 +3,15 @@ package es.unex.cum.mdp.ef2.bingo;
 import es.unex.cum.mdp.ef2.Estadistica;
 import es.unex.cum.mdp.ef2.Usuario;
 
+/**
+ * Clase principal que contiene el metodo main para ejecutar el juego de Bingo.
+ */
 public class MainBingo {
+	
+	/**
+     * Metodo principal para ejecutar el juego de Bingo.
+     * @param args Argumentos de la linea de comandos (no utilizados en este caso).
+     */
 	public static void main(String[] args) {
 		String tipo="80H";
 		long startTime = System.currentTimeMillis();

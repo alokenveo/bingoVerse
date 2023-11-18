@@ -2,7 +2,15 @@ package es.unex.cum.mdp.ef2.carton;
 
 import es.unex.cum.mdp.ef2.Usuario;
 
+/**
+ * Clase de prueba para la construccion de cartones.
+ */
 public class MainCarton {
+	/**
+     * Metodo principal de la aplicación.
+     *
+     * @param args Argumentos de la linea de comandos (no se utilizan en este caso).
+     */
 	public static void main(String[] args) {
 		CartonBuilder cb = new CartonBuilder("75M");
 		ICarton c = cb.withId(1)
