@@ -11,13 +11,11 @@ public class Bingo90 extends Bingo{
 
 	@Override
 	public Reparto jugar(Estadistica[] estadistica) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Reparto jugar(Estadistica[] estadistica, List<Integer> numeros) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
