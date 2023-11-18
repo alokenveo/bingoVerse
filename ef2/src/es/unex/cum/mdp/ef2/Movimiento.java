@@ -18,12 +18,19 @@ public class Movimiento {
 		this.valor = valor;
 		this.fecha = fecha;
 	}
-	public Movimiento(String info, float monederoActual, float valor, Date fecha) {
+	public Movimiento(String info, float valor, float monederoActual, Date fecha) {
 		super();
 		this.info = info;
 		this.monederoActual = monederoActual;
 		this.valor = valor;
 		this.fecha = fecha;
+	}
+	public Movimiento(String string, float precio,float monederoActual) {
+		this.info=string;
+		this.monederoActual=monederoActual;
+		this.valor=precio;
+		fecha=new Date();
+		
 	}
 	public String getInfo() {
 		return info;

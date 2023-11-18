@@ -61,8 +61,8 @@ public class Usuario {
 		return monedero;
 	}
 
-	public void setMonedero(float monedero) {
-		this.monedero = monedero;
+	public void setMonedero(float add) {
+		this.monedero = add;
 	}
 
 	public int getNumBingos() {
@@ -120,10 +120,12 @@ public class Usuario {
 	}
 
 	public boolean addCarton(ICarton c) {
-		if (c == null) {
+		if (c == null|| monedero<c.getPrecio()) {
 			return false;
 		}
+		monedero-=c.getPrecio();
 		c.setId(cartones.size()+1);
+		addMovimiento(new Movimiento("Comprar carton",c.getPrecio(),monedero));
 		return cartones.add(c);
 	}
 

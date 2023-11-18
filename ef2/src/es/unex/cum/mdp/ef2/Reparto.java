@@ -48,6 +48,7 @@ public class Reparto {
 
 	public void setRepartoEspeciales(float repartoEspeciales) {
 		this.repartoEspeciales = repartoEspeciales;
+		recaudacion-=repartoEspeciales;
 	}
 
 	public float getRepartoLinea() {
@@ -72,6 +73,7 @@ public class Reparto {
 
 	public void setCaja(float caja) {
 		this.caja = caja;
+		recaudacion-=caja;
 	}
 
 	public float getRecaudacion() {

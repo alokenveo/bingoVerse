@@ -259,6 +259,7 @@ public class Carton80H implements ICarton {
 	@Override
 	public void setPremio(float valor) {
 		this.premio = valor;
+		user.addMovimiento(new Movimiento("Premio",valor,user.getMonedero()));
 
 	}
 

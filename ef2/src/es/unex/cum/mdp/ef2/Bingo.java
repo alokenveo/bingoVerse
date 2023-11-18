@@ -39,6 +39,7 @@ public abstract class Bingo {
 	public ICarton crearCarton(String tipo, Usuario u) {
 		CartonBuilder builder = new CartonBuilder(tipo);
 		ICarton carton = builder.withUser(u).build();
+		carton.setPrecio(precioCarton);
 		u.addCarton(carton);
 		add(carton);
 		return carton;
