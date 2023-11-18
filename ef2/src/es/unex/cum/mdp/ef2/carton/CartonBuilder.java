@@ -1,4 +1,6 @@
-package es.unex.cum.mdp.ef2;
+package es.unex.cum.mdp.ef2.carton;
+
+import es.unex.cum.mdp.ef2.Usuario;
 
 public class CartonBuilder {
 	private ICarton b;

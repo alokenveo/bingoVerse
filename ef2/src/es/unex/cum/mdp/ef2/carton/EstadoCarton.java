@@ -1,4 +1,4 @@
-package es.unex.cum.mdp.ef2;
+package es.unex.cum.mdp.ef2.carton;
 
 public enum EstadoCarton {
 	NADA, ESPECIAL, LINEA, ESPECIAL_LINEA, ESPECIAL_BINGO, LINEA_BINGO, ESPECIAL_LINEA_BINGO, BINGO

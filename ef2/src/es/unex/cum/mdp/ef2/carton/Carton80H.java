@@ -1,6 +1,18 @@
-package es.unex.cum.mdp.ef2;
+package es.unex.cum.mdp.ef2.carton;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+
+import es.unex.cum.mdp.ef2.Movimiento;
+import es.unex.cum.mdp.ef2.Usuario;
+import es.unex.cum.mdp.ef2.celda.CeldaCarton;
+import es.unex.cum.mdp.ef2.celda.EstadoCelda;
 
 public class Carton80H implements ICarton {
 	private int id;

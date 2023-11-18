@@ -1,9 +1,14 @@
-package es.unex.cum.mdp.ef2;
+package es.unex.cum.mdp.ef2.bingo;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+
+import es.unex.cum.mdp.ef2.Estadistica;
+import es.unex.cum.mdp.ef2.Usuario;
+import es.unex.cum.mdp.ef2.carton.CartonBuilder;
+import es.unex.cum.mdp.ef2.carton.ICarton;
 
 public abstract class Bingo {
 	protected int id;
@@ -26,6 +31,12 @@ public abstract class Bingo {
 		this.cartones=new HashSet<>();
 		this.bolasSacadas=new ArrayList<Integer>();
 		this.reparto=new Reparto();
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public float getPrecioCarton() {
 		return precioCarton;

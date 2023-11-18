@@ -11,6 +11,21 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import es.unex.cum.mdp.ef2.bingo.Bingo;
+import es.unex.cum.mdp.ef2.bingo.FactoriaBingo;
+import es.unex.cum.mdp.ef2.bingo.Reparto;
+import es.unex.cum.mdp.ef2.carton.Carton75H;
+import es.unex.cum.mdp.ef2.carton.Carton75M;
+import es.unex.cum.mdp.ef2.carton.Carton75V;
+import es.unex.cum.mdp.ef2.carton.Carton80H;
+import es.unex.cum.mdp.ef2.carton.Carton80M;
+import es.unex.cum.mdp.ef2.carton.Carton80V;
+import es.unex.cum.mdp.ef2.carton.Carton90H;
+import es.unex.cum.mdp.ef2.carton.Carton90M;
+import es.unex.cum.mdp.ef2.carton.Carton90V;
+import es.unex.cum.mdp.ef2.carton.ICarton;
+import es.unex.cum.mdp.ef2.celda.CeldaCarton;
+
 public class TestBingo {
 
 	private Bingo b1;

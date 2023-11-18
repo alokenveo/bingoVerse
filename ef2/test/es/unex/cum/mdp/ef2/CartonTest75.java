@@ -11,12 +11,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.unex.cum.mdp.ef2.Carton75H;
-import es.unex.cum.mdp.ef2.Carton75M;
-import es.unex.cum.mdp.ef2.Carton75V;
-import es.unex.cum.mdp.ef2.CeldaCarton;
-import es.unex.cum.mdp.ef2.EstadoCarton;
-import es.unex.cum.mdp.ef2.ICarton;
+import es.unex.cum.mdp.ef2.carton.Carton75H;
+import es.unex.cum.mdp.ef2.carton.Carton75M;
+import es.unex.cum.mdp.ef2.carton.Carton75V;
+import es.unex.cum.mdp.ef2.carton.EstadoCarton;
+import es.unex.cum.mdp.ef2.carton.ICarton;
+import es.unex.cum.mdp.ef2.celda.CeldaCarton;
 
 public class CartonTest75 {
 	private ICarton c75 = null;

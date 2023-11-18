@@ -1,6 +1,9 @@
-package es.unex.cum.mdp.ef2;
+package es.unex.cum.mdp.ef2.carton;
 
-public class Carton75H implements ICarton{
+import es.unex.cum.mdp.ef2.Usuario;
+import es.unex.cum.mdp.ef2.celda.CeldaCarton;
+
+public class Carton80M implements ICarton{
 
 	@Override
 	public EstadoCarton getEstado() {

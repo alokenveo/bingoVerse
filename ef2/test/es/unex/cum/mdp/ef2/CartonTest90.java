@@ -11,12 +11,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.unex.cum.mdp.ef2.Carton90H;
-import es.unex.cum.mdp.ef2.Carton90M;
-import es.unex.cum.mdp.ef2.Carton90V;
-import es.unex.cum.mdp.ef2.CeldaCarton;
-import es.unex.cum.mdp.ef2.EstadoCarton;
-import es.unex.cum.mdp.ef2.ICarton;
+import es.unex.cum.mdp.ef2.carton.Carton90H;
+import es.unex.cum.mdp.ef2.carton.Carton90M;
+import es.unex.cum.mdp.ef2.carton.Carton90V;
+import es.unex.cum.mdp.ef2.carton.EstadoCarton;
+import es.unex.cum.mdp.ef2.carton.ICarton;
+import es.unex.cum.mdp.ef2.celda.CeldaCarton;
 
 public class CartonTest90 {
 

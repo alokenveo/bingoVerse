@@ -1,9 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+package es.unex.cum.mdp.ef2.carton;
 
-package es.unex.cum.mdp.ef2;
+import es.unex.cum.mdp.ef2.*;
+import es.unex.cum.mdp.ef2.celda.*;
 
 public interface ICarton {
 

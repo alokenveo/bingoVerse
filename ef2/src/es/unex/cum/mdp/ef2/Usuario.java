@@ -1,6 +1,11 @@
 package es.unex.cum.mdp.ef2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import es.unex.cum.mdp.ef2.carton.ICarton;
 
 public class Usuario {
 	protected String nick;

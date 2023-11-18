@@ -1,6 +1,9 @@
-package es.unex.cum.mdp.ef2;
+package es.unex.cum.mdp.ef2.carton;
 
-public class Carton75V implements ICarton{
+import es.unex.cum.mdp.ef2.Usuario;
+import es.unex.cum.mdp.ef2.celda.CeldaCarton;
+
+public class Carton75H implements ICarton{
 
 	@Override
 	public EstadoCarton getEstado() {
@@ -32,11 +35,6 @@ public class Carton75V implements ICarton{
 		return null;
 	}
 
-	@Override
-	public void setUser(Usuario user) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public boolean comprobarLinea() {
@@ -122,4 +120,9 @@ public class Carton75V implements ICarton{
 		
 	}
 
+	@Override
+	public void setUser(Usuario user) {
+		// TODO Auto-generated method stub
+		
+	}
 }

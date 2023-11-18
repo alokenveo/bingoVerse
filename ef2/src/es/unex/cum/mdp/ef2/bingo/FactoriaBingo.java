@@ -1,10 +1,14 @@
-package es.unex.cum.mdp.ef2;
+package es.unex.cum.mdp.ef2.bingo;
 
 public class FactoriaBingo {
 
 	private static Bingo b;
 	public FactoriaBingo() {
 		super();
+	}
+	public FactoriaBingo withId(final int id) {
+		FactoriaBingo.b.setId(id);
+		return this;
 	}
 	public static Bingo buildBingo(String tipo, float p) {
 		if(tipo.equals("75H")) {

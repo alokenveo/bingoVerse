@@ -1,4 +1,7 @@
-package es.unex.cum.mdp.ef2;
+package es.unex.cum.mdp.ef2.bingo;
+
+import es.unex.cum.mdp.ef2.Estadistica;
+import es.unex.cum.mdp.ef2.Usuario;
 
 public class MainBingo {
 	public static void main(String[] args) {

@@ -1,8 +1,11 @@
-package es.unex.cum.mdp.ef2;
+package es.unex.cum.mdp.ef2.bingo;
 
 import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
+
+import es.unex.cum.mdp.ef2.Estadistica;
+import es.unex.cum.mdp.ef2.carton.ICarton;
 
 public class Bingo80 extends Bingo {
 
