@@ -1,6 +1,7 @@
 package es.unex.cum.mdp.ef2;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -33,6 +34,16 @@ public class Usuario {
 		this.cartonesHist=new LinkedList<>();
 		this.historico=new ArrayList<>();
 	}
+	
+	public Usuario(String nick, String nombre, String password) {
+		super();
+		this.nick = nick;
+		this.nombre = nombre;
+		this.password = password;
+		this.cartones=new ArrayList<>();
+		this.cartonesHist=new LinkedList<>();
+		this.historico=new ArrayList<>();
+	}
 
 	/**
      * Constructor de Usuario con parametros.
@@ -43,7 +54,7 @@ public class Usuario {
      * @param password Contraseña del usuario.
      * @param i        Monto inicial en el monedero del usuario.
      */
-	public Usuario(String nick, String nombre, String password, int i) {
+	public Usuario(String nick, String nombre, String password, float i) {
 		super();
 		this.nick = nick;
 		this.nombre = nombre;
@@ -253,12 +264,12 @@ public class Usuario {
      * @return true si se agrega con exito, false de lo contrario.
      */
 	public boolean addCarton(ICarton c) {
-		if (c == null|| monedero<c.getPrecio()) {
+		if (c == null|| monedero<c.getPrecio()||monedero==0.0F) {
 			return false;
 		}
-		monedero-=c.getPrecio();
 		c.setId(cartones.size()+1);
-		addMovimiento(new Movimiento("Comprar carton",c.getPrecio(),monedero));
+		addMovimiento(new Movimiento("Comprar carton",c.getPrecio(),monedero,new Date()));
+		monedero-=c.getPrecio();
 		return cartones.add(c);
 	}
 
