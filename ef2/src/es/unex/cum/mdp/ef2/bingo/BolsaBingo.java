@@ -10,6 +10,16 @@ public class BolsaBingo implements Bolsa{
 	private int numMaxBolas;
 	
 	/**
+	 * Constructor por defecto que crea la bolsa de numeros del Bingo
+	 */
+	public BolsaBingo() {
+		super();
+		this.bolsa=new LinkedList<>();
+		for(int i=1;i<=80;i++) {
+			addNumero(i);
+		}
+	}
+	/**
      * Constructor que inicializa la bolsa con un numero maximo de bolas.
      *
      * @param numMaxBolas Numero maximo de bolas en la bolsa.
@@ -17,6 +27,10 @@ public class BolsaBingo implements Bolsa{
 	public BolsaBingo(int numMaxBolas) {
 		this.numMaxBolas = numMaxBolas;
 		this.bolsa=new LinkedList<>();
+		for(int i=1;i<=numMaxBolas;i++) {
+			addNumero(i);
+		}
+		
 	}
 	
 	/**
@@ -47,18 +61,12 @@ public class BolsaBingo implements Bolsa{
 	}
 	@Override
 	public void ordenar() {
-		LinkedList<Integer> listaOrdenada = new LinkedList<>(bolsa);
-        listaOrdenada.sort(Integer::compareTo);
-        bolsa.clear();
-        bolsa.addAll(listaOrdenada);
+		Collections.sort((LinkedList)bolsa);
 		
 	}
 	@Override
 	public void desordenar() {
-		LinkedList<Integer> listaDesordenada = new LinkedList<>(bolsa);
-        Collections.shuffle(listaDesordenada);
-        bolsa.clear();
-        bolsa.addAll(listaDesordenada);
+		Collections.shuffle((LinkedList)bolsa);
 		
 	}
 	@Override

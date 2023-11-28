@@ -36,12 +36,13 @@ public class MainBingo {
 		//Con la factoría hecha. 
 		b=FactoriaBingo.buildBingo(tipo, 2.0F); //Dos euros el cartón
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 15000; i++) {
 				b.crearCarton(tipo, u);
 				b.crearCarton(tipo, u1);
 				b.crearCarton(tipo, u2);
 		}
-		b.jugar(estadistica);
+		Reparto r=b.jugar(estadistica);
+		System.out.println(r);
 		
 		long endTime = System.currentTimeMillis();
 		long totalTime = endTime - startTime;

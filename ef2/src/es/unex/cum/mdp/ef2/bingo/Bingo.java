@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 import es.unex.cum.mdp.ef2.Estadistica;
 import es.unex.cum.mdp.ef2.Usuario;
@@ -23,6 +24,7 @@ public abstract class Bingo {
 	protected ArrayList<Integer> bolasSacadas;
 	protected BolsaBingo b;
 	protected Reparto reparto;
+	protected float boteInicial;
 
 	/**
      * Constructor predeterminado de la clase Bingo.
@@ -80,6 +82,29 @@ public abstract class Bingo {
 		this.precioCarton = precioCarton;
 	}
 	
+	public Date getFecha() {
+		return fecha;
+	}
+	public void setFecha(Date d) {
+		this.fecha=d;
+	}
+	
+	public void setRecaudacion(float r) {
+		this.recaudacion=r;
+	}
+	
+	public HashSet<ICarton> getCartones(){
+		return cartones;
+	}
+	
+	public boolean isJugado() {
+		return jugado;
+	}
+
+	public void setJugado(boolean jugado) {
+		this.jugado = jugado;
+	}
+
 	/**
      * Obtiene la recaudación total del juego de Bingo.
      *
@@ -89,6 +114,42 @@ public abstract class Bingo {
 		return (int) recaudacion;
 	}
 	
+	public ArrayList<Integer> getBolasSacadas() {
+		return bolasSacadas;
+	}
+
+	public void setBolasSacadas(ArrayList<Integer> bolasSacadas) {
+		this.bolasSacadas = bolasSacadas;
+	}
+
+	public BolsaBingo getB() {
+		return b;
+	}
+
+	public void setB(BolsaBingo b) {
+		this.b = b;
+	}
+
+	public Reparto getReparto() {
+		return reparto;
+	}
+
+	public void setReparto(Reparto reparto) {
+		this.reparto = reparto;
+	}
+
+	public float getBoteInicial() {
+		return boteInicial;
+	}
+
+	public void setBoteInicial(float boteInicial) {
+		this.boteInicial = boteInicial;
+	}
+
+	public void setCartones(HashSet<ICarton> cartones) {
+		this.cartones = cartones;
+	}
+
 	/**
      * Crea un nuevo cartón para un usuario y lo agrega al juego.
      *
@@ -97,6 +158,8 @@ public abstract class Bingo {
      * @return El cartón creado.
      */
 	public ICarton crearCarton(String tipo, Usuario u) {
+		if (u.getMonedero()<this.precioCarton)
+			return null;
 		CartonBuilder builder = new CartonBuilder(tipo);
 		ICarton carton = builder.withUser(u).build();
 		carton.setPrecio(precioCarton);
@@ -111,10 +174,15 @@ public abstract class Bingo {
      * @param c Cartón a agregar.
      * @return `true` si se agrega con éxito, `false` si el cartón es nulo.
      */
+	
+	//-----------------------
+	//MUCHA DUDA
+	//-----------------------
 	public boolean add(ICarton c) {
 		if (c == null) {
 			return false;
 		}
+		recaudacion=boteInicial+2*c.getPrecio(); //Preguntar por qué por 2
 		return cartones.add(c);
 	}
 	
@@ -144,6 +212,25 @@ public abstract class Bingo {
 	public String toString() {
 		return "Bingo [id=" + id + ", fecha=" + fecha + ", precioCarton=" + precioCarton + ", recaudacion="
 				+ recaudacion + "]";
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(fecha, precioCarton, recaudacion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bingo other = (Bingo) obj;
+		return Objects.equals(fecha, other.fecha)
+				&& Float.floatToIntBits(precioCarton) == Float.floatToIntBits(other.precioCarton)
+				&& Float.floatToIntBits(recaudacion) == Float.floatToIntBits(other.recaudacion);
 	}
 
 }
