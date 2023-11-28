@@ -353,7 +353,9 @@ public class CartonTest80 {
 				// Si las filas no tiene 5 números --> Fallo
 				if (contFilas[i] != 5)
 					fail();
-				// Si hay columnas sin ningún número --> fallo
+			}
+			// Si hay columnas sin ningún número --> fallo
+			for (int i = 0; i < 8; i++) {
 				if (contColumnas[i] == 0)
 					fail();
 			}
@@ -379,7 +381,9 @@ public class CartonTest80 {
 				// Si las filas no tiene 5 números --> Fallo
 				if (contFilas[i] != 5)
 					fail();
-				// Si hay columnas sin ningún número --> fallo
+			}
+			// Si hay columnas sin ningún número --> fallo
+			for (int i = 0; i < 8; i++) {
 				if (contColumnas[i] == 0)
 					fail();
 			}
@@ -404,7 +408,9 @@ public class CartonTest80 {
 				// Si las filas no tiene 5 números --> Fallo
 				if (contFilas[i] != 5)
 					fail();
-				// Si hay columnas sin ningún número --> fallo
+			}
+			// Si hay columnas sin ningún número --> fallo
+			for (int i = 0; i < 8; i++) {
 				if (contColumnas[i] == 0)
 					fail();
 			}
@@ -429,8 +435,9 @@ public class CartonTest80 {
 							contColumnas[c[i][j].getColumna()]++; // Cuento numero que hay en columnas
 							// Que el numero esta en la columna correcta
 							if ((c[i][j].getColumna() * 10 > c[i][j].getNumero())
-									|| ((c[i][j].getColumna() + 1) * 10 < c[i][j].getNumero()))
+									|| ((c[i][j].getColumna() + 1) * 10 < c[i][j].getNumero())) {
 								fail();
+							}
 
 						}
 					}
@@ -441,7 +448,9 @@ public class CartonTest80 {
 				// Si las filas no tiene 5 números --> Fallo
 				if (contFilas[i] != 5)
 					fail();
-				// Si hay columnas sin ningún número --> fallo
+			}
+			// Si hay columnas sin ningún número --> fallo
+			for (int i = 0; i < 8; i++) {
 				if (contColumnas[i] == 0)
 					fail();
 			}
@@ -470,11 +479,13 @@ public class CartonTest80 {
 				// Si las filas no tiene 5 números --> Fallo
 				if (contFilas[i] != 5)
 					fail();
-				// Si hay columnas sin ningún número --> fallo
+			}
+			
+			// Si hay columnas sin ningún número --> fallo
+			for (int i = 0; i < 8; i++) {
 				if (contColumnas[i] == 0)
 					fail();
 			}
-
 		} else if (tipo.equals("80H")) {
 			c80 = new Carton80H();
 			c80.repartir();
@@ -497,7 +508,9 @@ public class CartonTest80 {
 				// Si las filas no tiene 5 números --> Fallo
 				if (contFilas[i] != 5)
 					fail();
-				// Si hay columnas sin ningún número --> fallo
+			}
+			// Si hay columnas sin ningún número --> fallo
+			for (int i = 0; i < 8; i++) {
 				if (contColumnas[i] == 0)
 					fail();
 			}

@@ -188,7 +188,7 @@ public class Carton80H implements ICarton {
 						aleatorio=generarAleatorio((10*j)+1, (10*j)+10);
 						break;
 					}
-				}while(!numerosGenerados.add(aleatorio));//while(repetido);
+				}while(!numerosGenerados.add(aleatorio));
 				m[i][j]=new CeldaCarton(aleatorio,1,i,j);
 			}
 		}
@@ -287,7 +287,7 @@ public class Carton80H implements ICarton {
 	@Override
 	public void setPremio(float valor) {
 		this.premio = valor;
-		user.addMovimiento(new Movimiento("Premio",valor,user.getMonedero()));
+		//user.addMovimiento(new Movimiento("Premio",valor,user.getMonedero()));
 
 	}
 
