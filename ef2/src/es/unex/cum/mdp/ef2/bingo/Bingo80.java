@@ -109,24 +109,30 @@ public class Bingo80 extends Bingo {
 
 		for (ICarton c : cartones) {
 			float premio = 0.0f;
+			float premioInd=0.0f;
 			c.getUser().addCartonHistorico(c);
 			switch (c.getEstado()) {
 			case BINGO:
 				premio = r.getRepartoBingo();
+				premioInd=round(premio/r.getNumBingo(),2);
+				premioInd=round(premioInd,2);
 				c.getUser().addMovimiento(
-						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
-				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
-				c.setPremio(premio);
+						new Movimiento("Carton premiado", premioInd, c.getUser().getMonedero(), this.fecha));
+				c.getUser().setMonedero(c.getUser().getMonedero() + premioInd);
+				c.setPremio(premioInd);
 				break;
 			case LINEA:
 				premio = r.getRepartoLinea();
+				premioInd=round(premio/r.getNumLineas(),2);
+				premioInd=round(premioInd,2);
 				c.getUser().addMovimiento(
-						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
-				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
-				c.setPremio(premio);
+						new Movimiento("Carton premiado", premioInd, c.getUser().getMonedero(), this.fecha));
+				c.getUser().setMonedero(c.getUser().getMonedero() + premioInd);
+				c.setPremio(premioInd);
 				break;
 			case LINEA_BINGO:
-				premio = r.getRepartoBingo() + r.getRepartoLinea();
+				premio = round((r.getRepartoBingo()/r.getNumBingo()),2) + round((r.getRepartoLinea()/r.getNumLineas()),2);
+				premio=round(premio,2);
 				c.getUser().addMovimiento(
 						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
 				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
@@ -134,27 +140,32 @@ public class Bingo80 extends Bingo {
 				break;
 			case ESPECIAL:
 				premio = r.getRepartoEspeciales();
+				premioInd=round(premio/r.getNumEspeciales(),2);
+				premioInd=round(premioInd,2);
 				c.getUser().addMovimiento(
-						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
-				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
-				c.setPremio(premio);
+						new Movimiento("Carton premiado", premioInd, c.getUser().getMonedero(), this.fecha));
+				c.getUser().setMonedero(c.getUser().getMonedero() + premioInd);
+				c.setPremio(premioInd);
 				break;
 			case ESPECIAL_LINEA:
-				premio = r.getRepartoEspeciales() + r.getRepartoLinea();
+				premio = round((r.getRepartoEspeciales()/r.getNumEspeciales()),2) + round((r.getRepartoLinea()/r.getNumLineas()),2);
+				premio=round(premio,2);
 				c.getUser().addMovimiento(
 						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
 				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
 				c.setPremio(premio);
 				break;
 			case ESPECIAL_BINGO:
-				premio = r.getRepartoBingo() + r.getRepartoEspeciales();
+				premio = round((r.getRepartoBingo()/r.getNumBingo()),2) + round((r.getRepartoEspeciales()/r.getNumEspeciales()),2);
+				premio=round(premio,2);
 				c.getUser().addMovimiento(
 						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
 				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
 				c.setPremio(premio);
 				break;
 			case ESPECIAL_LINEA_BINGO:
-				premio = r.getRepartoBingo() + r.getRepartoEspeciales() + r.getRepartoLinea();
+				premio = round((r.getRepartoBingo()/r.getNumBingo()),2) + round((r.getRepartoEspeciales()/r.getNumEspeciales()),2) + round((r.getRepartoLinea()/r.getNumLineas()),2);
+				premio=round(premio,2);
 				c.getUser().addMovimiento(
 						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
 				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
@@ -245,24 +256,30 @@ public class Bingo80 extends Bingo {
 
 		for (ICarton c : cartones) {
 			float premio = 0.0f;
+			float premioInd=0.0f;
 			c.getUser().addCartonHistorico(c);
 			switch (c.getEstado()) {
 			case BINGO:
 				premio = r.getRepartoBingo();
+				premioInd=round(premio/r.getNumBingo(),2);
+				premioInd=round(premioInd,2);
 				c.getUser().addMovimiento(
-						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
-				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
-				c.setPremio(premio);
+						new Movimiento("Carton premiado", premioInd, c.getUser().getMonedero(), this.fecha));
+				c.getUser().setMonedero(c.getUser().getMonedero() + premioInd);
+				c.setPremio(premioInd);
 				break;
 			case LINEA:
 				premio = r.getRepartoLinea();
+				premioInd=round(premio/r.getNumLineas(),2);
+				premioInd=round(premioInd,2);
 				c.getUser().addMovimiento(
-						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
-				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
-				c.setPremio(premio);
+						new Movimiento("Carton premiado", premioInd, c.getUser().getMonedero(), this.fecha));
+				c.getUser().setMonedero(c.getUser().getMonedero() + premioInd);
+				c.setPremio(premioInd);
 				break;
 			case LINEA_BINGO:
-				premio = r.getRepartoBingo() + r.getRepartoLinea();
+				premio = round((r.getRepartoBingo()/r.getNumBingo()),2) + round((r.getRepartoLinea()/r.getNumLineas()),2);
+				premio=round(premio,2);
 				c.getUser().addMovimiento(
 						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
 				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
@@ -270,27 +287,32 @@ public class Bingo80 extends Bingo {
 				break;
 			case ESPECIAL:
 				premio = r.getRepartoEspeciales();
+				premioInd=round(premio/r.getNumEspeciales(),2);
+				premioInd=round(premioInd,2);
 				c.getUser().addMovimiento(
-						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
-				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
-				c.setPremio(premio);
+						new Movimiento("Carton premiado", premioInd, c.getUser().getMonedero(), this.fecha));
+				c.getUser().setMonedero(c.getUser().getMonedero() + premioInd);
+				c.setPremio(premioInd);
 				break;
 			case ESPECIAL_LINEA:
-				premio = r.getRepartoEspeciales() + r.getRepartoLinea();
+				premio = round((r.getRepartoEspeciales()/r.getNumEspeciales()),2) + round((r.getRepartoLinea()/r.getNumLineas()),2);
+				premio=round(premio,2);
 				c.getUser().addMovimiento(
 						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
 				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
 				c.setPremio(premio);
 				break;
 			case ESPECIAL_BINGO:
-				premio = r.getRepartoBingo() + r.getRepartoEspeciales();
+				premio = round((r.getRepartoBingo()/r.getNumBingo()),2) + round((r.getRepartoEspeciales()/r.getNumEspeciales()),2);
+				premio=round(premio,2);
 				c.getUser().addMovimiento(
 						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
 				c.getUser().setMonedero(c.getUser().getMonedero() + premio);
 				c.setPremio(premio);
 				break;
 			case ESPECIAL_LINEA_BINGO:
-				premio = r.getRepartoBingo() + r.getRepartoEspeciales() + r.getRepartoLinea();
+				premio = round((r.getRepartoBingo()/r.getNumBingo()),2) + round((r.getRepartoEspeciales()/r.getNumEspeciales()),2) + round((r.getRepartoLinea()/r.getNumLineas()),2);
+				premio=round(premio,2);
 				c.getUser().addMovimiento(
 						new Movimiento("Carton premiado", premio, c.getUser().getMonedero(), this.fecha));
 				c.getUser().setMonedero(c.getUser().getMonedero() + premio);

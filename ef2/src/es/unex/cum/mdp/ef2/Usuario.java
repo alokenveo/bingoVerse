@@ -11,7 +11,7 @@ import es.unex.cum.mdp.ef2.carton.ICarton;
 /**
  * Clase que representa a un usuario en un juego de Bingo.
  */
-public class Usuario {
+public class Usuario implements Comparable {
 	protected String nick;
 	protected String nombre;
 	protected String password;
@@ -296,6 +296,29 @@ public class Usuario {
 			return false;
 		}
 		return historico.add(m);
+	}
+
+	@Override
+	public int compareTo(Object aux) {
+		Usuario o=(Usuario)aux;
+		if(this.getNumBingos()<o.getNumBingos())
+			return 5;
+		else if(this.getNumBingos()>o.getNumBingos())
+			return -1;
+		else {
+			//comprobar linea
+			if(this.getNumLineas()<o.getNumLineas())
+				return 5;
+			else if(this.getNumLineas()>o.getNumLineas())
+				return -1;
+			else {
+				if(this.getNumEspeciales()<o.getNumEspeciales())
+					return 5;
+				else if(this.getNumEspeciales()>o.getNumEspeciales())
+					return -1;
+				else return 0;
+			}
+		}
 	}
 
 }

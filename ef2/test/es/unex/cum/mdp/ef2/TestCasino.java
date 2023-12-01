@@ -1062,7 +1062,6 @@ public class TestCasino {
 					+ r.getRepartoBingo() / r.getNumBingo() // Premio de bingo
 					+ r.getRepartoLinea() / r.getNumLineas() // premio de linea
 					, 2); // 100 cartones -10 C - 1
-			System.out.println(i+": Monedero: "+u.getMonedero()+"; Total:"+total);
 			assertTrue(u.getMonedero() == total);
 		}
 		// Compruebo el dinero del jugador con 10 cartones

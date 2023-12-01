@@ -221,11 +221,11 @@ public class Casino {
 		 List<Usuario> listaUsuarios = new ArrayList<>(usuarios.values());
 
 	        // Ordenar la lista de usuarios utilizando un comparador compuesto
-	        Collections.sort(listaUsuarios, Comparator
+	        /*Collections.sort(listaUsuarios, Comparator
 	                .comparingInt(Usuario::getNumBingos).reversed()
 	                .thenComparingInt(Usuario::getNumLineas).reversed()
-	                .thenComparingInt(Usuario::getNumEspeciales).reversed());
-
+	                .thenComparingInt(Usuario::getNumEspeciales).reversed());*/
+		 Collections.sort(listaUsuarios);
 	        return listaUsuarios;
 	}
 

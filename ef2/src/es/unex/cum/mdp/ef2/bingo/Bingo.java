@@ -110,8 +110,8 @@ public abstract class Bingo {
      *
      * @return Recaudación total.
      */
-	public int getRecaudacion() {
-		return (int) recaudacion;
+	public float getRecaudacion() {
+		return recaudacion;
 	}
 	
 	public ArrayList<Integer> getBolasSacadas() {
