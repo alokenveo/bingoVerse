@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import es.unex.cum.mdp.ef2.bingo.Bingo;
+import es.unex.cum.mdp.ef2.bingo.Bingo80;
 import es.unex.cum.mdp.ef2.bingo.FactoriaBingo;
 import es.unex.cum.mdp.ef2.bingo.Reparto;
 import es.unex.cum.mdp.ef2.carton.Carton75H;
@@ -36,7 +37,6 @@ public class TestBingo {
 	public void setUp() throws Exception {
 		///////////////////////////////
 		//Sin factoria
-		/*
 		if (tipo.contains("75")) {
 			//b1 = new Bingo75(2.0F);
 		} else if (tipo.contains("80")) {
@@ -44,7 +44,6 @@ public class TestBingo {
 		} else {
 			//b1 = new Bingo90(2.0F);
 		}
-		*/
 		////////////////////////////////
 
 		////////////////////////////////
@@ -73,6 +72,8 @@ public class TestBingo {
 			l.add(32);
 			l.add(3);
 			l.add(69);
+			l.add(16);
+			l.add(48);
 			l.add(6);
 			l.add(70);
 			l.add(7);
@@ -82,8 +83,6 @@ public class TestBingo {
 			l.add(43);
 			l.add(45);
 			l.add(15);
-			l.add(16);
-			l.add(48);
 			l.add(50);
 			l.add(51);
 			l.add(22);
@@ -97,24 +96,22 @@ public class TestBingo {
 //			5 |	15 | 28 |	X  |	47 |	X  |	X  |	78 |	
 //			10|	19 | X  |	40 |	X  |	60 |	69 |	X  |
 
-			l.add(54);
-			l.add(42);
-			l.add(11);
 			l.add(65);
 			l.add(5);
 			l.add(69);
+			l.add(74);			
+			l.add(55);
+			l.add(44);
+			l.add(27);
+			l.add(54);
+			l.add(42);
+			l.add(11);
 			l.add(40);
 			l.add(10);
-			l.add(74);
-
-			l.add(44);
 			l.add(78);
 			l.add(15);
 			l.add(47);
 			l.add(19);
-
-			l.add(55);
-			l.add(27);
 			l.add(28);
 			l.add(60);
 			l.add(31);
@@ -130,14 +127,14 @@ public class TestBingo {
 			l.add(33);
 			l.add(68);
 			l.add(38);
-			l.add(10);
 			l.add(75);
+			l.add(52);
+			l.add(23);
+			l.add(10);			
 			l.add(76);
 			l.add(50);
-			l.add(19);
-			l.add(52);
-			l.add(84);
-			l.add(23);
+			l.add(19);			
+			l.add(84);				
 			l.add(24);
 			l.add(25);
 			l.add(89);

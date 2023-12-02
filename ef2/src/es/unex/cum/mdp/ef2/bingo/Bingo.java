@@ -82,25 +82,57 @@ public abstract class Bingo {
 		this.precioCarton = precioCarton;
 	}
 	
+	/**
+     * Obtiene la fecha del bingo.
+     *
+     * @return Fecha del bingo.
+     */
 	public Date getFecha() {
 		return fecha;
 	}
+	
+	/**
+     * Establece la fecha del bingo.
+     *
+     * @param d Fecha a establecer.
+     */
 	public void setFecha(Date d) {
 		this.fecha=d;
 	}
 	
+	/**
+     * Establece la recaudación del bingo.
+     *
+     * @param r Recaudación a establecer.
+     */
+
 	public void setRecaudacion(float r) {
 		this.recaudacion=r;
 	}
 	
+	/**
+     * Obtiene los cartones asociados al bingo.
+     *
+     * @return Conjunto de cartones asociados al bingo.
+     */
 	public HashSet<ICarton> getCartones(){
 		return cartones;
 	}
 	
+	/**
+     * Verifica si el bingo ha sido jugado.
+     *
+     * @return true si el bingo ha sido jugado, false de lo contrario.
+     */
 	public boolean isJugado() {
 		return jugado;
 	}
 
+	/**
+     * Establece el estado de jugado del bingo.
+     *
+     * @param jugado Estado a establecer.
+     */
 	public void setJugado(boolean jugado) {
 		this.jugado = jugado;
 	}
@@ -114,38 +146,83 @@ public abstract class Bingo {
 		return recaudacion;
 	}
 	
+	/**
+     * Obtiene la lista de bolas sacadas durante el bingo.
+     *
+     * @return Lista de bolas sacadas durante el bingo.
+     */
 	public ArrayList<Integer> getBolasSacadas() {
 		return bolasSacadas;
 	}
 
+	/**
+     * Establece la lista de bolas sacadas durante el bingo.
+     *
+     * @param bolasSacadas Lista de bolas a establecer.
+     */
 	public void setBolasSacadas(ArrayList<Integer> bolasSacadas) {
 		this.bolasSacadas = bolasSacadas;
 	}
 
+	/**
+     * Obtiene la bolsa de bolas asociada al bingo.
+     *
+     * @return Bolsa de bolas asociada al bingo.
+     */
 	public BolsaBingo getB() {
 		return b;
 	}
 
+	/**
+     * Establece la bolsa de bolas asociada al bingo.
+     *
+     * @param b Bolsa de bolas a establecer.
+     */
 	public void setB(BolsaBingo b) {
 		this.b = b;
 	}
 
+	/**
+     * Obtiene el reparto asociado al bingo.
+     *
+     * @return Reparto asociado al bingo.
+     */
 	public Reparto getReparto() {
 		return reparto;
 	}
 
+	/**
+     * Establece el reparto asociado al bingo.
+     *
+     * @param reparto Reparto a establecer.
+     */
 	public void setReparto(Reparto reparto) {
 		this.reparto = reparto;
 	}
 
+	/**
+     * Obtiene el bote inicial del bingo.
+     *
+     * @return Bote inicial del bingo.
+     */
 	public float getBoteInicial() {
 		return boteInicial;
 	}
 
+	/**
+     * Establece el bote inicial del bingo.
+     *
+     * @param boteInicial Bote inicial a establecer.
+     */
 	public void setBoteInicial(float boteInicial) {
 		this.boteInicial = boteInicial;
 	}
 
+	/**
+     * Establece los cartones asociados al bingo.
+     *
+     * @param cartones Conjunto de cartones a establecer.
+     */
 	public void setCartones(HashSet<ICarton> cartones) {
 		this.cartones = cartones;
 	}
@@ -214,11 +291,22 @@ public abstract class Bingo {
 				+ recaudacion + "]";
 	}
 	
+	/**
+     * Calcula el valor hash del bingo basado en la fecha, el precio del cartón y la recaudación.
+     *
+     * @return Valor hash del bingo.
+     */
 	@Override
 	public int hashCode() {
 		return Objects.hash(fecha, precioCarton, recaudacion);
 	}
 
+	/**
+     * Compara el bingo con otro objeto para determinar si son iguales.
+     *
+     * @param obj Objeto a comparar.
+     * @return true si los bingos son iguales, false de lo contrario.
+     */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -13,6 +13,9 @@ public class Reparto {
 	private float caja;
 	private float recaudacion;
 
+	/**
+	 * Constructor por defecto de un objeto Reparto
+	 */
 	public Reparto() {
 		super();
 	}

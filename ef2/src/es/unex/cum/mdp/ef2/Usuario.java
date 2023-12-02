@@ -9,7 +9,8 @@ import java.util.Queue;
 import es.unex.cum.mdp.ef2.carton.ICarton;
 
 /**
- * Clase que representa a un usuario en un juego de Bingo.
+ * Clase que representa a un usuario del sistema de bingo.
+ * Implementa la interfaz Comparable para permitir la comparación entre usuarios.
  */
 public class Usuario implements Comparable {
 	protected String nick;
@@ -35,6 +36,13 @@ public class Usuario implements Comparable {
 		this.historico=new ArrayList<>();
 	}
 	
+	/**
+     * Constructor de la clase Usuario.
+     *
+     * @param nick     Nickname del usuario.
+     * @param nombre   Nombre del usuario.
+     * @param password Contraseña del usuario.
+     */
 	public Usuario(String nick, String nombre, String password) {
 		super();
 		this.nick = nick;
@@ -298,6 +306,13 @@ public class Usuario implements Comparable {
 		return historico.add(m);
 	}
 
+	/**
+     * Método de comparación implementado de la interfaz Comparable.
+     * Compara dos usuarios basándose en el número de bingos, líneas y especiales.
+     *
+     * @param aux Objeto a comparar (debe ser de tipo Usuario).
+     * @return 5 si el objeto actual es menor, -1 si es mayor, 0 si son iguales.
+     */
 	@Override
 	public int compareTo(Object aux) {
 		Usuario o=(Usuario)aux;

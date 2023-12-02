@@ -55,7 +55,6 @@ public class Bingo80 extends Bingo {
 			numero = (int) b.sacarBola();
 			bolasSacadas.add(numero);
 
-			// estadistica[numero] = new Estadistica(numero);
 			estadistica[numero].setNumSacado(estadistica[numero].getNumSacado() + 1);
 
 			Iterator<ICarton> it = cartones.iterator();
@@ -202,7 +201,6 @@ public class Bingo80 extends Bingo {
 			numero = numeros.remove(0);
 			bolasSacadas.add(numero);
 
-			// estadistica[numero] = new Estadistica(numero);
 			estadistica[numero].setNumSacado(estadistica[numero].getNumSacado() + 1);
 
 			Iterator<ICarton> it = cartones.iterator();
