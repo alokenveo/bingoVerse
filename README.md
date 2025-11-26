@@ -73,7 +73,7 @@ Cada variante puede implementarse con tres estructuras diferentes:
 
 1. **Clonar el repositorio**
 ```bash
-git clone https://github.com/alokenveo/bingoverse.git
+git clone https://github.com/alokenveo/bingoVerse.git
 cd bingoverse
 ```
 
