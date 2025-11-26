@@ -5,7 +5,6 @@
 ![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=java)
 ![JavaFX](https://img.shields.io/badge/JavaFX-UI-blue?style=for-the-badge&logo=java)
 ![JUnit](https://img.shields.io/badge/JUnit-5-green?style=for-the-badge&logo=junit5)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
 **Sistema completo de gestión de casino virtual con múltiples variantes de Bingo**
 
